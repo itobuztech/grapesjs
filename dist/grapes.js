@@ -26415,8 +26415,13 @@ module.exports = __webpack_require__(/*! backbone */ "./node_modules/backbone/ba
     (0, _underscore.each)(items, function (value, key) {
       return itemsArr.push({ key: key, value: value });
     });
+
     return itemsArr.sort(function (a, b) {
-      return _this4.getQueryLength(b.key) - _this4.getQueryLength(a.key);
+      if (a.key.includes('min-width') && b.key.includes('min-width')) {
+        return _this4.getQueryLength(a.key) - _this4.getQueryLength(b.key);
+      } else {
+        return _this4.getQueryLength(b.key) - _this4.getQueryLength(a.key);
+      }
     });
   }
 });
@@ -39252,7 +39257,7 @@ module.exports = function () {
     plugins: plugins,
 
     // Will be replaced on build
-    version: '0.14.61',
+    version: '0.14.62',
 
     /**
      * Initialize the editor with passed options
